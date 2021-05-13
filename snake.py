@@ -16,7 +16,6 @@ class Snake:
             position = ( xcor, 0 )
             self.extend( position )
             xcor -= 20
-            
 
     def extend( self, position ):
         segment = Turtle( shape="square" )
@@ -32,6 +31,13 @@ class Snake:
             y = self.segments[ i - 1 ].ycor()
             self.segments[i].goto( x, y )
         self.head.forward( self.MOVE_DISTANCE )
+
+    def reset( self ):
+        for segment in self.segments:
+            segment.goto( 1000, 1000 )
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
     # * Snake movements
     def up( self ):
